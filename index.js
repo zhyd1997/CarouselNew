@@ -8,49 +8,47 @@ let currentIndex = 0;
 const LIST_LENGTH = elListCarouselItem.length;
 
 elArrowRight.onclick = function() {
-    let oldIndex = currentIndex;
-
-    if (currentIndex >= LIST_LENGTH - 1) {
-        currentIndex = 0;
-    } else {
-        currentIndex = currentIndex + 1;
-    }
-
-    elListCarouselItem[oldIndex].classList.remove('carousel-item_current');
-    elListCarouselItem[currentIndex].classList.add('carousel-item_current');
-    elIndicatorItem[oldIndex].classList.remove('indicator-item_current');
-    elIndicatorItem[currentIndex].classList.add('indicator-item_current');
+    let targetIndex = currentIndex + 1;
+    handleIndexChange(targetIndex);
 }
 
 elArrowLeft.onclick = function() {
-    let oldIndex = currentIndex;
-
-    if (currentIndex <= 0) {
-        currentIndex = LIST_LENGTH - 1;
-    } else {
-        currentIndex = currentIndex - 1;
-    }
-
-    elListCarouselItem[oldIndex].classList.remove('carousel-item_current');
-    elListCarouselItem[currentIndex].classList.add('carousel-item_current');
-    elIndicatorItem[oldIndex].classList.remove('indicator-item_current');
-    elIndicatorItem[currentIndex].classList.add('indicator-item_current');
+    let targetIndex = currentIndex - 1;
+    handleIndexChange(targetIndex);
 }
 
 elIndicatorList.onclick = function(event) {
     let target = event.target;
-
     if (!target.classList.contains('indicator-item')) {
         return;
     }
 
     let targetIndex = parseInt(target.dataset.index, 10);
-    let oldIndex = currentIndex;
+    handleIndexChange(targetIndex);
+}
 
-    elListCarouselItem[oldIndex].classList.remove('carousel-item_current');
-    elListCarouselItem[targetIndex].classList.add('carousel-item_current');
-    elIndicatorItem[oldIndex].classList.remove('indicator-item_current');
-    elIndicatorItem[targetIndex].classList.add('indicator-item_current');
+function changeCurrentClassName() {
+    document.querySelector('.carousel-item_current').classList.remove('carousel-item_current');
+    elListCarouselItem[currentIndex].classList.add('carousel-item_current');
+    document.querySelector('.indicator-item_current').classList.remove('indicator-item_current');
+    elIndicatorItem[currentIndex].classList.add('indicator-item_current');
+}
 
-    currentIndex = targetIndex;
+function changeCurrentIndex(targetIndex) {
+    if (targetIndex >= LIST_LENGTH) {
+        currentIndex = 0;
+    } else if (targetIndex < 0) {
+        currentIndex = LIST_LENGTH - 1;
+    } else {
+        currentIndex = targetIndex;
+    }
+}
+
+function handleIndexChange(targetIndex) {
+    if (currentIndex === targetIndex) {
+        return;
+    }
+
+    changeCurrentIndex(targetIndex);
+    changeCurrentClassName();
 }
