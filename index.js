@@ -15,6 +15,8 @@ elArrowRight.onclick = function() {
         currentIndex = currentIndex + 1;
     }
 
+    elIndicatorItem[oldIndex].classList.remove('indicator-item_current');
+    elIndicatorItem[currentIndex].classList.add('indicator-item_current');
     elListCarouselItem[oldIndex].classList.remove('carousel-item_current');
     elListCarouselItem[currentIndex].classList.add('carousel-item_current');
 }
@@ -28,6 +30,8 @@ elArrowLeft.onclick = function() {
         currentIndex = currentIndex - 1;
     }
 
+    elIndicatorItem[oldIndex].classList.remove('indicator-item_current');
+    elIndicatorItem[currentIndex].classList.add('indicator-item_current');
     elListCarouselItem[oldIndex].classList.remove('carousel-item_current');
     elListCarouselItem[currentIndex].classList.add('carousel-item_current');
 }
@@ -42,6 +46,8 @@ elIndicatorList.onclick = function(event) {
     let targetIndex = parseInt(target.dataset.index, 10);
     let oldIndex = currentIndex;
 
+    elIndicatorItem[oldIndex].classList.remove('indicator-item_current');
+    elIndicatorItem[targetIndex].classList.add('indicator-item_current');
     elListCarouselItem[oldIndex].classList.remove('carousel-item_current');
     elListCarouselItem[targetIndex].classList.add('carousel-item_current');
 }
