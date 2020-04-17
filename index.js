@@ -1,6 +1,8 @@
 let elArrowRight = document.querySelector('.arrow-right');
 let elArrowLeft = document.querySelector('.arrow-left');
 let elListCarouselItem = document.querySelectorAll('.carousel-item');
+let elIndicatorList = document.querySelector('.indicator-list');
+let elIndicatorItem = document.querySelectorAll('.indicator-item');
 
 let currentIndex = 0;
 
@@ -28,4 +30,18 @@ elArrowLeft.onclick = function() {
 
     elListCarouselItem[oldIndex].classList.remove('carousel-item_current');
     elListCarouselItem[currentIndex].classList.add('carousel-item_current');
+}
+
+elIndicatorList.onclick = function(event) {
+    let target = event.target;
+
+    if (!target.classList.contains('indicator-item')) {
+        return;
+    }
+
+    let targetIndex = parseInt(target.dataset.index, 10);
+    let oldIndex = currentIndex;
+
+    elListCarouselItem[oldIndex].classList.remove('carousel-item_current');
+    elListCarouselItem[targetIndex].classList.add('carousel-item_current');
 }
