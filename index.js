@@ -6,7 +6,6 @@ let elIndicatorItem = document.querySelectorAll('.indicator-item');
 
 let currentIndex = 0;
 const LIST_LENGTH = elListCarouselItem.length;
-console.log(LIST_LENGTH);
 
 elArrowRight.onclick = function() {
     let oldIndex = currentIndex;
