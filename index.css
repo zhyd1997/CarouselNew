@@ -33,8 +33,36 @@
     display: inline-block;
     margin-left: 2px;
     margin-right: 2px;
+    cursor: pointer;
 }
 
 .indicator-item_current {
     background-color: blue;
+}
+
+.arrow { 
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    font-size: 14;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.arrow:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.arrow-right {
+    right: 15px;
+}
+
+.arrow-left {
+    left: 15px;
 }
